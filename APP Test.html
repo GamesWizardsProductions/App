@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Face Type</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .face-type {
+            margin: 10px;
+            width: 150px;
+        }
+        .face-type img {
+            width: 100%;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .face-type img:hover {
+            transform: scale(1.05);
+        }
+        .face-type label {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Face Type</h1>
+    <div class="container">
+        <div class="face-type">
+            <img src="Oval Face Icon.png" alt="Oval Face" onclick="selectFaceType('oval')" onmouseover="playHoverSound()">
+            <label>Oval</label>
+        </div>
+        <div class="face-type">
+            <img src="Round Face Icon.png" alt="Round Face" onclick="selectFaceType('round')" onmouseover="playHoverSound()">
+            <label>Round</label>
+        </div>
+        <div class="face-type">
+            <img src="Square Face Icon.png" alt="Square Face" onclick="selectFaceType('square')" onmouseover="playHoverSound()">
+            <label>Square</label>
+        </div>
+        <div class="face-type">
+            <img src="Heart Face Icon.png" alt="Heart Face" onclick="selectFaceType('heart')" onmouseover="playHoverSound()">
+            <label>Heart</label>
+        </div>
+        <div class="face-type">
+            <img src="Long Face Icon.png" alt="Long Face" onclick="selectFaceType('long')" onmouseover="playHoverSound()">
+            <label>Long</label>
+        </div>
+    </div>
+
+    <!-- Audio elements for sounds -->
+    <audio id="clickSound" src="click-21156.mp3"></audio>
+    <audio id="hoverSound" src="mixkit-cool-interface-click-tone-2568.wav"></audio>
+
+    <script>
+        function selectFaceType(faceType) {
+            document.getElementById('clickSound').play(); // Play click sound
+            window.location.href = `Skin%20Type.html?faceTypes=${faceType}`;
+        }
+
+        function playHoverSound() {
+            document.getElementById('hoverSound').play(); // Play hover sound
+        }
+    </script>
+</body>
+</html>

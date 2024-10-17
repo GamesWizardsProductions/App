@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Skin Tone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: #000;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .skin-type {
+            margin: 10px;
+            width: 150px;
+        }
+        .skin-type img {
+            width: 100%;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .skin-type img:hover {
+            transform: scale(1.05);
+        }
+        .skin-type label {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+        }
+        .tips {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Skin Tone</h1>
+    <div class="container">
+        <div class="skin-type">
+            <img src="Light Skin.png" alt="Light Skin" onclick="selectSkinTone('light'); playClickSound()" onmouseover="playHoverSound()">
+            <label>Light</label>
+        </div>
+        <div class="skin-type">
+            <img src="Medium Skin.png" alt="Medium Skin" onclick="selectSkinTone('medium'); playClickSound()" onmouseover="playHoverSound()">
+            <label>Medium</label>
+        </div>
+        <div class="skin-type">
+            <img src="Olive Skin.png" alt="Olive Skin" onclick="selectSkinTone('olive'); playClickSound()" onmouseover="playHoverSound()">
+            <label>Olive</label>
+        </div>
+        <div class="skin-type">
+            <img src="Dark Skin.png" alt="Dark Skin" onclick="selectSkinTone('dark'); playClickSound()" onmouseover="playHoverSound()">
+            <label>Dark</label>
+        </div>
+    </div>
+
+    <div class="tips" id="tips"></div>
+
+    <!-- Audio elements for sounds -->
+    <audio id="clickSound" src="click-21156.mp3"></audio>
+    <audio id="hoverSound" src="mixkit-cool-interface-click-tone-2568.wav"></audio>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const faceType = urlParams.get('faceType');
+
+        const tipsData = {
+            oval: {
+                light: "For an oval face with light skin, opt for soft curls and pastel makeup tones. A-line dresses and flowy fabrics complement your face shape.",
+                medium: "For an oval face with medium skin, go for bronzed makeup looks and straight hairstyles. Try V-neck tops and fitted clothing.",
+                olive: "For an oval face with olive skin, warm earthy tones in makeup and loose waves work great. Maxi dresses or structured jackets highlight your features.",
+                dark: "For an oval face with dark skin, bold lip colors and sleek hairstyles enhance your look. Go for vibrant colors in clothing and statement accessories."
+            },
+            round: {
+                light: "For a round face with light skin, long layered hairstyles and contouring makeup can add definition. Avoid round necklines; opt for V-necks.",
+                medium: "For a round face with medium skin, go for soft highlights and bronzer to contour. Flared pants or structured blazers elongate your frame.",
+                olive: "For a round face with olive skin, side-swept bangs and neutral makeup can give a slimming effect. Wear angular cuts like blazers and asymmetrical dresses.",
+                dark: "For a round face with dark skin, volumized hairstyles and bold brows add balance. Go for dark, monochrome outfits to streamline your look."
+            },
+            square: {
+                light: "For a square face with light skin, soft waves and blushes give a softening effect. Choose soft fabrics like chiffon or silk in your clothing.",
+                medium: "For a square face with medium skin, opt for long layers and pink-toned makeup. Fitted jackets and skirts with movement suit you well.",
+                olive: "For a square face with olive skin, try textured hairstyles and shimmery makeup. Dresses with flowing fabrics or wide-leg pants complement your frame.",
+                dark: "For a square face with dark skin, sleek hairstyles and bold makeup accentuate your features. Opt for dresses that create curves or structured outfits."
+            },
+            heart: {
+                light: "For a heart-shaped face with light skin, go for side-parted hairstyles and soft blushes. Off-the-shoulder tops and sweetheart necklines highlight your frame.",
+                medium: "For a heart-shaped face with medium skin, soft waves and peach-toned makeup work best. Try fitted tops or dresses that flare at the hips.",
+                olive: "For a heart-shaped face with olive skin, go for soft curls and warm-toned makeup. A-line skirts and flowy tops balance your proportions.",
+                dark: "For a heart-shaped face with dark skin, opt for sleek buns and dramatic eyes. Wear dresses with volume at the bottom to balance your look."
+            },
+            long: {
+                light: "For a long face with light skin, medium-length hair with waves and dewy makeup softens your look. Flowy dresses and wide-leg pants work well.",
+                medium: "For a long face with medium skin, try chin-length bobs and bronzed makeup. Wear wide belts and cinched waists to add width.",
+                olive: "For a long face with olive skin, loose curls and gold-toned makeup are great. Choose horizontal stripes or layered clothing for balance.",
+                dark: "For a long face with dark skin, high ponytails and bold makeup make a statement. Flared pants or ruffled tops create balance."
+            }
+        };
+
+        function selectSkinTone(skinTone) {
+            const tips = tipsData[faceType][skinTone];
+            document.getElementById('tips').innerHTML = `<strong>Fashion & Makeup Tips:</strong><p>${tips}</p>`;
+        }
+
+        function playClickSound() {
+            document.getElementById('clickSound').play(); // Play click sound
+        }
+
+        function playHoverSound() {
+            document.getElementById('hoverSound').play(); // Play hover sound
+        }
+    </script>
+</body>
+</html>
